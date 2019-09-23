@@ -8,8 +8,6 @@ request.beforeRequest = function({
 	method,
 	data,
 	header,
-	success,
-	fail,
 	isMock,
 	isSuccess,
 }, next){
