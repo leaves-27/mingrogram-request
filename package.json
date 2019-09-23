@@ -1,0 +1,19 @@
+{
+  "name": "@leaves-27/mingrogram-request",
+  "version": "1.0.1",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "publish": "npm publish --access=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leaves-27/mingrogram-request.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leaves-27/mingrogram-request/issues"
+  },
+  "homepage": "https://github.com/leaves-27/mingrogram-request#readme"
+}
