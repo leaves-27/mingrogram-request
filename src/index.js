@@ -12,21 +12,23 @@ export default class Request {
 	    url = '',
 	    method = 'get',
 	    header = {},
-		data = {},
+		  data = {},
 	    success = ()=>{},
 	    fail = ()=>{},
 	    isMock = false,
-	    isSuccess = false
+	    isSuccess = false,
+      isUploadFile = false
 	  }){
 		this.beforeRequest({
-			url,
+			  url,
 		    method,
 		    header,
-			data,
+			  data,
 		    success,
 		    fail,
 		    isMock,
-		    isSuccess
+		    isSuccess,
+				isUploadFile
 		}, (params)=>{
 			const options = {
 				...params,
@@ -45,7 +47,30 @@ export default class Request {
 					});
 				}
 			};
-			wx.request(options);
+			// const options = {
+			// 	url: `${apiPrefix}/applet/fixcommon/uploadFile`,
+			// 	header: {
+			// 		'content-type': 'application/json',
+			// 		'token': token
+			//   },
+			// 	success (res){
+			// 		resolve(JSON.parse(res.data));
+			// 	},
+			// 	fail(error){
+			// 		reject(error);
+			// 	}
+			// }
+			if(isUploadFile){
+				const { filePath, name, formData} = data;
+				delete options.data;
+				wx.uploadFile(Object.assign({}, options, {
+					filePath,
+					name,
+					formData,
+				}));
+			} else {
+				wx.request(options);
+			}
 		});
 	}
 };
